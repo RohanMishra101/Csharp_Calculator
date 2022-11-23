@@ -66,22 +66,79 @@ namespace Calculator
         {
             string str = display.Text;
             display.Text = str + "0";
-            add_Click(display.Text, e);
         }
 
         private void add_Click(object sender, EventArgs e)
         {
             string str1 = display.Text;
             display.Text = str1 + " + ";
-            button16_Click("+", e);
         }
 
         private void button16_Click(object sender, EventArgs e)
         {
-            /*if (sender == "+")
+            string str2 = display.Text;
+            //MessageBox.Show(str2);
+            int len = str2.Length;
+            for (int i = 0; str2[i] < len; i++)
             {
+                if (str2[i] == '+')
+                {
+                    
 
-            }*/
+                }
+                else if (str2[i] == '-')
+                {
+
+                }
+                else if (str2[i] == '*')
+                {
+
+                }
+                else if (str2[i]== '/')
+                {
+                    
+                }
+                else
+                {
+                    string tempNum = Convert.ToString(str2[i]);
+                    string num1 = " ";
+                    num1 += tempNum;
+                }
+            }
+        }
+
+        private void button15_Click(object sender, EventArgs e)
+        {
+            string str1 = display.Text;
+            display.Text = str1 + ".";
+        }
+
+        private void button14_Click(object sender, EventArgs e)
+        {
+            string str1 = display.Text;
+            display.Text = str1 + " / ";
+        }
+
+        private void button13_Click(object sender, EventArgs e)
+        {
+            string str1 = display.Text;
+            display.Text = str1 + " * ";
+        }
+
+        private void sub_Click(object sender, EventArgs e)
+        {
+            string str1 = display.Text;
+            display.Text = str1 + " - ";
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void display_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
