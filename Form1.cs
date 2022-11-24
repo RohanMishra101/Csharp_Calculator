@@ -2,11 +2,14 @@ namespace Calculator
 {
     public partial class Form1 : Form
     {
+        string operate="";
+        decimal calculate1=0,calculate2=0;
+        int count = 0;
         public Form1()
         {
             InitializeComponent();
         }
-
+        
         private void button4_Click(object sender, EventArgs e)
         {
             string str = display.Text;
@@ -67,44 +70,29 @@ namespace Calculator
             string str = display.Text;
             display.Text = str + "0";
         }
-
+        public void check1()
+        {
+            if (display.Text != "" && display.Text != "+" && display.Text != "-" && display.Text != "*" && display.Text != "/")
+            {
+                calculate1 = Convert.ToDecimal(display.Text);
+            }
+        }
+        public void check2()
+        {
+            if (display.Text != "" && display.Text != "+" && display.Text != "-" && display.Text != "*" && display.Text != "/")
+            {
+                calculate2 = Convert.ToDecimal(display.Text);
+            }
+        }
         private void add_Click(object sender, EventArgs e)
         {
             string str1 = display.Text;
             display.Text = str1 + " + ";
-        }
-
-        private void button16_Click(object sender, EventArgs e)
-        {
-            string str2 = display.Text;
-            //MessageBox.Show(str2);
-            int len = str2.Length;
-            for (int i = 0; str2[i] < len; i++)
-            {
-                if (str2[i] == '+')
-                {
-                    
-
-                }
-                else if (str2[i] == '-')
-                {
-
-                }
-                else if (str2[i] == '*')
-                {
-
-                }
-                else if (str2[i]== '/')
-                {
-                    
-                }
-                else
-                {
-                    string tempNum = Convert.ToString(str2[i]);
-                    string num1 = " ";
-                    num1 += tempNum;
-                }
-            }
+            check1();
+            operate = "+";
+            display.Clear();
+            
+            count = 1;
         }
 
         private void button15_Click(object sender, EventArgs e)
@@ -117,18 +105,27 @@ namespace Calculator
         {
             string str1 = display.Text;
             display.Text = str1 + " / ";
+            check1();
+            operate = "/";
+            count = 2;
         }
 
         private void button13_Click(object sender, EventArgs e)
         {
             string str1 = display.Text;
             display.Text = str1 + " * ";
+            check1();
+            operate = "*";
+            count = 3;
         }
 
         private void sub_Click(object sender, EventArgs e)
         {
             string str1 = display.Text;
             display.Text = str1 + " - ";
+            check1();
+            operate = "-";
+            count = 4;
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -139,6 +136,32 @@ namespace Calculator
         private void display_TextChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+
+        }
+        private void button16_Click(object sender, EventArgs e)
+        {
+            mainCal(count);
+        }
+        public void mainCal(int count)
+        {
+            decimal ans;
+            switch(count)
+            {
+                case 1:
+                    ans =calculate1+Convert.ToDecimal(display.Text);
+                    display.Text = ans.ToString();
+                    break;
+                case 2:
+                    break;
+                case 3:
+                    break;
+                default:
+                    break;
+            }
         }
     }
 }
