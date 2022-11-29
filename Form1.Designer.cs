@@ -54,6 +54,12 @@
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.textBox3 = new System.Windows.Forms.TextBox();
             this.textBox4 = new System.Windows.Forms.TextBox();
+            this.button7 = new System.Windows.Forms.Button();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.C_Name = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Looks = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Coding_Skill = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // num9
@@ -279,21 +285,21 @@
             // 
             // button4
             // 
-            this.button4.Location = new System.Drawing.Point(37, 300);
+            this.button4.Location = new System.Drawing.Point(14, 300);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(75, 23);
             this.button4.TabIndex = 20;
-            this.button4.Text = "button4";
+            this.button4.Text = "Add";
             this.button4.UseVisualStyleBackColor = true;
             this.button4.Click += new System.EventHandler(this.button4_Click_1);
             // 
             // button5
             // 
-            this.button5.Location = new System.Drawing.Point(252, 303);
+            this.button5.Location = new System.Drawing.Point(244, 303);
             this.button5.Name = "button5";
             this.button5.Size = new System.Drawing.Size(75, 23);
             this.button5.TabIndex = 21;
-            this.button5.Text = "button5";
+            this.button5.Text = "Del";
             this.button5.UseVisualStyleBackColor = true;
             this.button5.Click += new System.EventHandler(this.button5_Click);
             // 
@@ -303,6 +309,7 @@
             this.textBox2.Name = "textBox2";
             this.textBox2.Size = new System.Drawing.Size(100, 23);
             this.textBox2.TabIndex = 23;
+            this.textBox2.TextChanged += new System.EventHandler(this.textBox2_TextChanged);
             // 
             // textBox3
             // 
@@ -318,11 +325,52 @@
             this.textBox4.Size = new System.Drawing.Size(100, 23);
             this.textBox4.TabIndex = 25;
             // 
+            // button7
+            // 
+            this.button7.Location = new System.Drawing.Point(138, 360);
+            this.button7.Name = "button7";
+            this.button7.Size = new System.Drawing.Size(75, 23);
+            this.button7.TabIndex = 27;
+            this.button7.Text = "button7";
+            this.button7.UseVisualStyleBackColor = true;
+            this.button7.Click += new System.EventHandler(this.button7_Click);
+            // 
+            // dataGridView1
+            // 
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.C_Name,
+            this.Looks,
+            this.Coding_Skill});
+            this.dataGridView1.Location = new System.Drawing.Point(359, 12);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.RowTemplate.Height = 25;
+            this.dataGridView1.Size = new System.Drawing.Size(340, 265);
+            this.dataGridView1.TabIndex = 30;
+            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick_1);
+            // 
+            // C_Name
+            // 
+            this.C_Name.HeaderText = "C_Name";
+            this.C_Name.Name = "C_Name";
+            // 
+            // Looks
+            // 
+            this.Looks.HeaderText = "Looks";
+            this.Looks.Name = "Looks";
+            // 
+            // Coding_Skill
+            // 
+            this.Coding_Skill.HeaderText = "Coding_Skill";
+            this.Coding_Skill.Name = "Coding_Skill";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(347, 366);
+            this.ClientSize = new System.Drawing.Size(694, 387);
+            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.button7);
             this.Controls.Add(this.textBox4);
             this.Controls.Add(this.textBox3);
             this.Controls.Add(this.textBox2);
@@ -352,6 +400,7 @@
             this.Name = "Form1";
             this.Text = "Calculator";
             this.Load += new System.EventHandler(this.Form1_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -384,5 +433,10 @@
         private TextBox textBox2;
         private TextBox textBox3;
         private TextBox textBox4;
+        private Button button7;
+        private DataGridView dataGridView1;
+        private DataGridViewTextBoxColumn C_Name;
+        private DataGridViewTextBoxColumn Looks;
+        private DataGridViewTextBoxColumn Coding_Skill;
     }
 }
