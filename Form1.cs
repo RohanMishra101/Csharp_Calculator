@@ -1,16 +1,18 @@
+using System.Data.SqlClient;
+
 namespace Calculator
 {
     public partial class Form1 : Form
     {
         string operate = "";
         decimal result = 0;
+        //USING . instead of address helps to access every other device
+        SqlConnection conn=new SqlConnection(@"Data Source=.\SQLEXPRESS;Initial Catalog=goodData;user id=sa;password=joker1245780;");
         public Form1()
         {
             InitializeComponent();
         }
-
         
-
         private void num1_Click(object sender, EventArgs e)
         {
             
@@ -221,6 +223,50 @@ namespace Calculator
         private void Form1_Load(object sender, EventArgs e)
         {
 
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            this.Show();
+            Form2 form = new Form2();
+            form.Show();
+        }
+
+        private void button4_Click_1(object sender, EventArgs e)
+        {
+            try
+            {
+                conn.Open();
+                string data1 = textBox2.Text;
+                string data2 = textBox3.Text;
+                string data3 = textBox4.Text;
+                string query = "Insert into Coders values("+ data1 + ",data2,data3)";
+                SqlCommand cmd = new SqlCommand(query, conn);
+                cmd.ExecuteNonQuery();
+                MessageBox.Show("Saved Successfully");
+                conn.Close();
+            }
+           catch (Exception ex)
+            {
+                MessageBox.Show("Save unsucessfull");
+            }
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                conn.Open();
+                string query = "DELETE From Coders where name = 'John Mayer'";
+                SqlCommand cmd = new SqlCommand(query, conn);
+                cmd.ExecuteNonQuery();
+                MessageBox.Show("Deleted Successfully");
+                conn.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Deletion unsucessfull");
+            }
         }
     }
 }
