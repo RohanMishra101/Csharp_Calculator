@@ -1,3 +1,4 @@
+using System.Data;
 using System.Data.SqlClient;
 
 namespace Calculator
@@ -221,35 +222,42 @@ namespace Calculator
 
         }
 
-        private void Form1_Load(object sender, EventArgs e)
-        {
-
-        }
 
         private void button3_Click(object sender, EventArgs e)
         {
             /*this.Show();
             Form2 form = new Form2();
             form.Show();*/
-            string str1 = textBox2.Text;
-            string str2 = textBox3.Text;
-            string str3 = textBox4.Text;
-            dataGridView1.Rows.Add(str1,str2,str3);
+            conn.Open();
+            string query = "Select * from Coders";
+            SqlCommand sqlCommand = new SqlCommand(query, conn);
+            SqlDataAdapter sda = new SqlDataAdapter(sqlCommand);
+            DataTable dt = new DataTable();
+            sda.Fill(dt);
+            dataGridView1.DataSource = dt;
+            conn.Close();
         }
 
         private void button4_Click_1(object sender, EventArgs e)
         {
             try
             {
-                conn.Open();
-                string data1 = textBox2.Text;
-                string data2 = textBox3.Text;
-                string data3 = textBox4.Text;
-                string query = "Insert into Coders values('"+ data1+"','"+ data2+"','"+ data3+"')";
-                SqlCommand cmd = new SqlCommand(query, conn);
-                cmd.ExecuteNonQuery();
-                MessageBox.Show("Saved Successfully");
-                conn.Close();
+                if (textBox2.Text == "Manish")
+                {
+                    errorProvider1.SetError(textBox2, "Very Bad");
+                }
+                else
+                {
+                    conn.Open();
+                    string data1 = textBox2.Text;
+                    string data2 = textBox3.Text;
+                    string data3 = textBox4.Text;
+                    string query = "Insert into Coders values('" + data1 + "','" + data2 + "','" + data3 + "')";
+                    SqlCommand cmd = new SqlCommand(query, conn);
+                    cmd.ExecuteNonQuery();
+                    MessageBox.Show("Saved Successfully");
+                    conn.Close();
+                }
             }
            catch (Exception ex)
             {
@@ -269,7 +277,7 @@ namespace Calculator
                 MessageBox.Show("Deleted Successfully");
                 conn.Close();
             }
-            catch (Exception ex)
+            catch (Exception )
             {
                 MessageBox.Show("Deletion unsucessfull");
             }
@@ -294,19 +302,43 @@ namespace Calculator
                 MessageBox.Show("Update unsucessfull");
             }
         }
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            conn.Open();
+            string query = "Select * from Coders";
+            SqlCommand sqlCommand = new SqlCommand(query, conn);
+            SqlDataAdapter sda = new SqlDataAdapter(sqlCommand);
+            DataTable dt = new DataTable();
+            sda.Fill(dt);
+            dataGridView1.DataSource = dt;
+            conn.Close();
+        }
+        private void button6_Click(object sender, EventArgs e)
+        {
+            conn.Open();
+            string dataUpd1 = textBox2.Text;
+            string query = "SELECT * from Coders where name='"+dataUpd1+"'";
+            SqlCommand sqlCommand = new SqlCommand(query, conn);
+            SqlDataAdapter sda = new SqlDataAdapter(sqlCommand);
+            DataTable dt = new DataTable();
+            sda.Fill(dt);
+            sqlCommand.Parameters.Add(new SqlCommand("@name",name));
+            SqlCommand = sqlCommand.ExecuteReader();
 
+            conn.Close();
+        }
+        private void dataGridView1_CellContentClick_1(object sender, DataGridViewCellEventArgs e)
+        {
+            
+        }
         private void textBox2_TextChanged(object sender, EventArgs e)
         {
-
+            if (textBox2.Text == "Manish") 
+            errorProvider1.SetError(textBox2,"Very Bad");
         }
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-        }
-
-        private void dataGridView1_CellContentClick_1(object sender, DataGridViewCellEventArgs e)
-        {
-
         }
     }
 }

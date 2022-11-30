@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.num9 = new System.Windows.Forms.Button();
             this.num8 = new System.Windows.Forms.Button();
@@ -54,12 +55,11 @@
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.textBox3 = new System.Windows.Forms.TextBox();
             this.textBox4 = new System.Windows.Forms.TextBox();
-            this.button7 = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.C_Name = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Looks = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Coding_Skill = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
+            this.button6 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.SuspendLayout();
             // 
             // num9
@@ -320,28 +320,15 @@
             // 
             // textBox4
             // 
+            this.textBox4.BackColor = System.Drawing.SystemColors.Window;
             this.textBox4.Location = new System.Drawing.Point(244, 332);
             this.textBox4.Name = "textBox4";
             this.textBox4.Size = new System.Drawing.Size(100, 23);
             this.textBox4.TabIndex = 25;
             // 
-            // button7
-            // 
-            this.button7.Location = new System.Drawing.Point(138, 360);
-            this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(75, 23);
-            this.button7.TabIndex = 27;
-            this.button7.Text = "button7";
-            this.button7.UseVisualStyleBackColor = true;
-            this.button7.Click += new System.EventHandler(this.button7_Click);
-            // 
             // dataGridView1
             // 
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.C_Name,
-            this.Looks,
-            this.Coding_Skill});
             this.dataGridView1.Location = new System.Drawing.Point(359, 12);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowTemplate.Height = 25;
@@ -349,28 +336,27 @@
             this.dataGridView1.TabIndex = 30;
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick_1);
             // 
-            // C_Name
+            // errorProvider1
             // 
-            this.C_Name.HeaderText = "C_Name";
-            this.C_Name.Name = "C_Name";
+            this.errorProvider1.ContainerControl = this;
             // 
-            // Looks
+            // button6
             // 
-            this.Looks.HeaderText = "Looks";
-            this.Looks.Name = "Looks";
-            // 
-            // Coding_Skill
-            // 
-            this.Coding_Skill.HeaderText = "Coding_Skill";
-            this.Coding_Skill.Name = "Coding_Skill";
+            this.button6.Location = new System.Drawing.Point(138, 360);
+            this.button6.Name = "button6";
+            this.button6.Size = new System.Drawing.Size(75, 23);
+            this.button6.TabIndex = 31;
+            this.button6.Text = "Show";
+            this.button6.UseVisualStyleBackColor = true;
+            this.button6.Click += new System.EventHandler(this.button6_Click);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(694, 387);
+            this.Controls.Add(this.button6);
             this.Controls.Add(this.dataGridView1);
-            this.Controls.Add(this.button7);
             this.Controls.Add(this.textBox4);
             this.Controls.Add(this.textBox3);
             this.Controls.Add(this.textBox2);
@@ -401,6 +387,7 @@
             this.Text = "Calculator";
             this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -433,10 +420,8 @@
         private TextBox textBox2;
         private TextBox textBox3;
         private TextBox textBox4;
-        private Button button7;
         private DataGridView dataGridView1;
-        private DataGridViewTextBoxColumn C_Name;
-        private DataGridViewTextBoxColumn Looks;
-        private DataGridViewTextBoxColumn Coding_Skill;
+        private ErrorProvider errorProvider1;
+        private Button button6;
     }
 }
