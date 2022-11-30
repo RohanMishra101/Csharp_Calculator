@@ -1,3 +1,5 @@
+//sql express
+//Micro sql server management studio
 using System.Data;
 using System.Data.SqlClient;
 
@@ -322,9 +324,6 @@ namespace Calculator
             SqlDataAdapter sda = new SqlDataAdapter(sqlCommand);
             DataTable dt = new DataTable();
             sda.Fill(dt);
-            sqlCommand.Parameters.Add(new SqlCommand("@name",name));
-            SqlCommand = sqlCommand.ExecuteReader();
-
             conn.Close();
         }
         private void dataGridView1_CellContentClick_1(object sender, DataGridViewCellEventArgs e)
