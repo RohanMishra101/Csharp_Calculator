@@ -254,16 +254,19 @@ namespace Calculator
                     string data1 = textBox2.Text;
                     string data2 = textBox3.Text;
                     string data3 = textBox4.Text;
-                    string query = "Insert into Coders values('" + data1 + "','" + data2 + "','" + data3 + "')";
+                    bool data4 = checkBox1.Checked;
+                    bool data5 = radioButton1.Checked;
+                    string query = "Insert into Coders values('" + data1 + "','" + data2 + "','" + data3 + "','" + data4 + "','" + data5 + "')";
                     SqlCommand cmd = new SqlCommand(query, conn);
                     cmd.ExecuteNonQuery();
                     MessageBox.Show("Saved Successfully");
                     conn.Close();
+                    /*cmd.Parameters.AddWithValue("@data1",textBox)*/
                 }
             }
            catch (Exception ex)
             {
-                MessageBox.Show("Save unsucessfull");
+                MessageBox.Show("Save unsucessful "+ex.Message);
             }
         }
 
@@ -285,25 +288,7 @@ namespace Calculator
             }
         }
 
-        private void button7_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                string dataUpd1 = textBox2.Text;
-                string dataUpd2 = textBox3.Text;
-                string dataUpd3 = textBox4.Text;
-                conn.Open();
-                string query = "UPDATE Coders SET name = '"+dataUpd1+"', coding_skill = '"+dataUpd2+"', Looks = '"+dataUpd3+"' WHERE name = '"+dataUpd1+"'; ";
-                SqlCommand cmd = new SqlCommand(query, conn);
-                cmd.ExecuteNonQuery();
-                MessageBox.Show("Updated Successfully");
-                conn.Close();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Update unsucessfull");
-            }
-        }
+ 
         private void Form1_Load(object sender, EventArgs e)
         {
             conn.Open();
@@ -313,7 +298,12 @@ namespace Calculator
             DataTable dt = new DataTable();
             sda.Fill(dt);
             dataGridView1.DataSource = dt;
+            /*dataGridView1.Rows.Add(content);*/
             conn.Close();
+         /*   for(int i=0;i<dt.Rows.Count;i++)
+            {
+                string adt_id=dt.Rows[i]["id"].ToString();
+            }*/
         }
         private void button6_Click(object sender, EventArgs e)
         {
@@ -324,7 +314,53 @@ namespace Calculator
             SqlDataAdapter sda = new SqlDataAdapter(sqlCommand);
             DataTable dt = new DataTable();
             sda.Fill(dt);
+            if (dt.Rows.Count > 0)
+            {
+                string data1 = dt.Rows[0]["name"].ToString();
+                string data2 = dt.Rows[0]["coding_skill"].ToString();
+                string data3 = dt.Rows[0]["looks"].ToString();
+                bool data4 =Convert.ToBoolean(dt.Rows[0]["Qualification"].ToString());
+                bool data5 = Convert.ToBoolean(dt.Rows[0]["GF"].ToString());
+                textBox2.Text = data1;
+                textBox3.Text = data2;
+                textBox4.Text = data3;
+                if(data4 == true)
+                {
+                    checkBox1.Checked=true;
+                }
+                else
+                {
+                    checkBox1.Checked = false;
+                }
+                if (data5 == true)
+                {
+                    radioButton1.Checked=true;
+                }
+                else
+                {
+                    radioButton1.Checked = false;
+                }
+            }
             conn.Close();
+        }
+        private void button7_Click_1(object sender, EventArgs e)
+        {
+            try
+            {
+                conn.Open();
+                string data1 = textBox2.Text;
+                string data2 = textBox3.Text;
+                string data3 = textBox4.Text;
+                string query = "UPDATE Coders SET name='" + data1 + "',coding_skill='" + data2 + "',Looks='" + data3 + "' WHERE name='" + data1 + "'";
+                SqlCommand cmd = new SqlCommand(query, conn);
+                cmd.ExecuteNonQuery();
+                MessageBox.Show("Updated Successfully");
+                conn.Close();
+            }
+           catch (Exception ex)
+            {
+                MessageBox.Show("Update Unsucessfull. Error: "+ex.Message);
+            }
         }
         private void dataGridView1_CellContentClick_1(object sender, DataGridViewCellEventArgs e)
         {
@@ -333,11 +369,21 @@ namespace Calculator
         private void textBox2_TextChanged(object sender, EventArgs e)
         {
             if (textBox2.Text == "Manish") 
-            errorProvider1.SetError(textBox2,"Very Bad");
+            errorProvider1.SetError(textBox2,"Khattam Coder ho choose at your own risk");
         }
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
+        }
+
+        private void radioButton1_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void checkBox1_CheckedChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
