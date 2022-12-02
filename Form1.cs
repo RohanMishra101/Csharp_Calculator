@@ -319,8 +319,9 @@ namespace Calculator
                 string data1 = dt.Rows[0]["name"].ToString();
                 string data2 = dt.Rows[0]["coding_skill"].ToString();
                 string data3 = dt.Rows[0]["looks"].ToString();
-                bool data4 =Convert.ToBoolean(dt.Rows[0]["Qualification"].ToString());
-                bool data5 = Convert.ToBoolean(dt.Rows[0]["GF"].ToString());
+                bool test = false;
+                bool data4 =Boolean.TryParse(dt.Rows[0]["Qualification"].ToString(),out test);
+                bool data5 = Boolean.TryParse(dt.Rows[0]["GF"].ToString(),out test);
                 textBox2.Text = data1;
                 textBox3.Text = data2;
                 textBox4.Text = data3;
@@ -403,6 +404,35 @@ namespace Calculator
             something = new Form3();
             something.ShowDialog();
             this.Show();
+        }
+
+        private void button9_Click(object sender, EventArgs e)
+        {
+            DataGridViewRow data = dataGridView1.CurrentRow;
+            string name=data.Cells["name"].Value.ToString();
+            string coding_skill=data.Cells["coding_skill"].Value.ToString();
+            string Looks=data.Cells["Looks"].Value.ToString();
+          /*  bool data4 = Convert.ToBoolean(data.Cells["Qualification"].Value);
+            bool data5 = Convert.ToBoolean(data.Cells["GF"].Value);*/
+            textBox2.Text = name;
+            textBox3.Text = coding_skill;
+            textBox4.Text = Looks;
+           /* if (data4 == true)
+            {
+                checkBox1.Checked = true;
+            }
+            else
+            {
+                checkBox1.Checked = false;
+            }
+            if (data5 == true)
+            {
+                radioButton1.Checked = true;
+            }
+            else
+            {
+                radioButton1.Checked = false;
+            }*/
         }
     }
 }
