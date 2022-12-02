@@ -65,6 +65,7 @@
             this.radioButton2 = new System.Windows.Forms.RadioButton();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
+            this.button8 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.SuspendLayout();
@@ -226,7 +227,7 @@
             // display
             // 
             this.display.Font = new System.Drawing.Font("Segoe UI", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.display.Location = new System.Drawing.Point(6, 12);
+            this.display.Location = new System.Drawing.Point(4, 12);
             this.display.Name = "display";
             this.display.Size = new System.Drawing.Size(335, 71);
             this.display.TabIndex = 14;
@@ -320,7 +321,7 @@
             // 
             // textBox3
             // 
-            this.textBox3.Location = new System.Drawing.Point(138, 331);
+            this.textBox3.Location = new System.Drawing.Point(138, 329);
             this.textBox3.Name = "textBox3";
             this.textBox3.Size = new System.Drawing.Size(100, 23);
             this.textBox3.TabIndex = 24;
@@ -429,11 +430,23 @@
             this.label2.TabIndex = 38;
             this.label2.Text = "GF";
             // 
+            // button8
+            // 
+            this.button8.Location = new System.Drawing.Point(244, 361);
+            this.button8.Name = "button8";
+            this.button8.Size = new System.Drawing.Size(75, 23);
+            this.button8.TabIndex = 39;
+            this.button8.Text = "button8";
+            this.button8.UseVisualStyleBackColor = true;
+            this.button8.Click += new System.EventHandler(this.button8_Click_1);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(694, 387);
+            this.AutoValidate = System.Windows.Forms.AutoValidate.Disable;
+            this.ClientSize = new System.Drawing.Size(762, 561);
+            this.Controls.Add(this.button8);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.radioButton2);
@@ -516,5 +529,6 @@
         private RadioButton radioButton1;
         private CheckBox checkBox2;
         private CheckBox checkBox1;
+        private Button button8;
     }
 }

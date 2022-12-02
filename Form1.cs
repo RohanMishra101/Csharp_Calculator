@@ -385,5 +385,24 @@ namespace Calculator
         {
 
         }
+
+        private void listView1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void progressBar1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button8_Click_1(object sender, EventArgs e)
+        {
+            Form3 something;
+            this.Hide();
+            something = new Form3();
+            something.ShowDialog();
+            this.Show();
+        }
     }
 }
