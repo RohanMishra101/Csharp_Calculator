@@ -1,4 +1,4 @@
-//sql express
+﻿//sql express
 //Micro sql server management studio
 using System.Data;
 using System.Data.SqlClient;
@@ -256,7 +256,23 @@ namespace Calculator
                     string data3 = textBox4.Text;
                     bool data4 = checkBox1.Checked;
                     bool data5 = radioButton1.Checked;
-                    string query = "Insert into Coders values('" + data1 + "','" + data2 + "','" + data3 + "','" + data4 + "','" + data5 + "')";
+                    int data6 = dateTimePicker1.Value.Year;
+                    int data7=dateTimePicker1 .Value.Month;
+                    int data8=dateTimePicker1 .Value.Day;
+                    int data9 = Convert.ToInt32(textBox5.Text);
+                    string query1 = "Select Month from Coders where month='"+data9+"'";
+                    SqlCommand sqlCommand = new SqlCommand(query1, conn);
+                    int data=(int)sqlCommand.ExecuteScalar();
+                    //SqlDataAdapter sda = new SqlDataAdapter(sqlCommand);
+                    //DataTable dt = new DataTable();
+                    //sda.Fill(dt);
+                    if (data == data9)
+                    {
+                        MessageBox.Show("Already Exists");
+                    }
+                    conn.Close();
+                    conn.Open();
+                    string query = "Insert into Coders values('" + data1 + "','" + data2 + "','" + data3 + "','" + data4 + "','" + data5 + "','" + data6 + "','" + data7 + "','" + data8 + "')";
                     SqlCommand cmd = new SqlCommand(query, conn);
                     cmd.ExecuteNonQuery();
                     MessageBox.Show("Saved Successfully");
@@ -433,6 +449,34 @@ namespace Calculator
             {
                 radioButton1.Checked = false;
             }*/
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+            /*textBox1.Text = " ";
+            textBox1.ForeColor = Color.Black;
+            *//*textBox1.PasswordChar = '●';*//*
+            textBox1.UseSystemPasswordChar = true;
+            if (textBox1.Text.Length == 0)
+            {
+                textBox1.ForeColor = Color.Gray;
+
+                textBox1.Text = "Enter password";
+
+                textBox1.UseSystemPasswordChar = false;
+
+                SelectNextControl(textBox1, true, true, false, true);
+            }*/
+        }
+
+        private void printDocument1_PrintPage(object sender, System.Drawing.Printing.PrintPageEventArgs e)
+        {
+
+        }
+
+        private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
